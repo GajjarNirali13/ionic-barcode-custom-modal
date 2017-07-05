@@ -1,0 +1,38 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+import { CustomModal } from '../pages/home/custom-modal-sample';
+
+@NgModule({
+  declarations: [
+    MyApp,
+    HomePage,
+    CustomModal
+  ],
+  imports: [
+    BrowserModule,
+    BootstrapModalModule,
+    ModalModule.forRoot(),
+    IonicModule.forRoot(MyApp)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+    HomePage,
+    CustomModal
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BarcodeScanner
+  ],
+})
+export class AppModule {}
